@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Guestbook</h1>
+
+        <div class="form-container">
+            <form id="guestbook-form">
+                <input type="text" id="name" placeholder="Name" required>
+                <textarea id="content" placeholder="Write something..." required></textarea>
+                <input type="password" id="password" placeholder="Password (for deleting)" required>
+                <input type="file" id="image" accept="image/*">
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+
+        <div class="entries-container">
+            <div class="filter-container">
+                <label for="length-filter">Filter by message length (min):</label>
+                <input type="number" id="length-filter" value="0" min="0">
+            </div>
+            <div id="guestbook-entries"></div>
+        </div>
+    </div>
+
+    <!-- Image Popup Modal -->
+    <div id="image-popup" class="modal-overlay">
+        <span class="close-button">&times;</span>
+        <img id="popup-image-content">
+    </div>
+
+    <!-- Custom Deletion Modal -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h4>Confirm Deletion</h4>
+            <p>Please enter the password to delete this entry.</p>
+            <input type="password" id="delete-password-input" placeholder="Password">
+            <!-- Error message container -->
+            <div id="error-message" class="error-text"></div>
+            <div class="modal-actions">
+                <button id="cancel-delete">Cancel</button>
+                <button id="confirm-delete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
